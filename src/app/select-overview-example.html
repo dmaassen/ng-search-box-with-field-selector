@@ -1,0 +1,27 @@
+<h4>Search input with field select</h4>
+<div style="display: flex; width: 100%">
+  <mat-form-field style="width: 500px" appearance="outline">
+    <input matInput placeholder="Search for name, matter or form..." [(ngModel)]="terms"/>
+    <mat-icon matPrefix>search</mat-icon>
+    <button *ngIf="terms" matSuffix mat-icon-button (click)="terms=''">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="not-full-width" appearance="outline">
+    <mat-select [(ngModel)]="scope">
+      <mat-option>
+        <em>All</em>
+      </mat-option>
+      <mat-option *ngFor="let scope of scopes" [value]="scope.field">
+        {{scope.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<pre>
+  terms: {{terms}}  
+</pre>
+<pre>
+  field: {{scope || 'all'}}
+</pre>
